@@ -6,479 +6,79 @@
   <meta name="theme-color" content="#4A148C" />
   <title>Ratiba ya Ibada ya Leo | TUMH</title>
   <style>
-    :root {
-      --purple: #4A148C;
-      --purple-2: #5f1fa3;
-      --purple-soft: #E1BEE7;
-      --black: #0d0d12;
-      --green: #1d7a3d;
-      --white: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { margin: 0; height: 100%; }
-    body {
-      min-height: 100vh;
-      background: #f6f6f6;
-      color: var(--black);
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-    }
-
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      background: #f7f7f7;
-      padding: 14px 22px 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .header {
-      width: min(1400px, 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 4px;
-    }
-
-    .logo-wrap {
-      flex: 0 0 auto;
-      width: clamp(54px, 5vw, 86px);
-      height: clamp(54px, 5vw, 86px);
-      border-radius: 50%;
-      background: linear-gradient(135deg, #54a9df, #78459c 52%, #ed267d);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 6px 16px rgba(74,20,140,0.18);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.22), transparent 28%);
-    }
-
-    .pcm {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      font-size: clamp(0.95rem, 1.4vw, 2.1rem);
-      font-weight: 700;
-      letter-spacing: -4px;
-      font-family: Arial, sans-serif;
-      transform: translateY(-2px);
-    }
-
-    .title {
-      color: var(--purple);
-      font-size: clamp(2.2rem, 4vw, 6rem);
-      line-height: 1.05;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      font-weight: 900;
-      text-align: center;
-      margin: 0;
-      white-space: nowrap;
-    }
-
-    .date {
-      margin: 10px 0 0;
-      color: var(--purple);
-      text-align: center;
-      font-size: clamp(1.2rem, 2vw, 2.6rem);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-    }
-
-    .rule {
-      width: min(78%, 1200px);
-      display: grid;
-      gap: 6px;
-      margin: 12px auto 0;
-    }
-
-    .rule span {
-      height: 4px;
-      border-radius: 2px;
-      background: var(--purple);
-    }
-
-    .hero {
-      width: min(1200px, 100%);
-      text-align: center;
-      margin-top: 6px;
-    }
-
-    .timer-box {
-      display: inline-block;
-      background: #000;
-      border-radius: 12px;
-      padding: 14px 26px 10px;
-      min-width: min(78vw, 760px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-    }
-
-    .timer {
-      color: #fff;
-      background: #000;
-      font-size: clamp(5rem, 12vw, 13rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      font-weight: 900;
-      font-variant-numeric: tabular-nums;
-      margin: 0;
-    }
-
-    .status {
-      margin: 18px 0 0;
-      color: var(--purple);
-      font-size: clamp(1rem, 1.9vw, 2.5rem);
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      min-height: 1.3em;
-    }
-
-    .current-title {
-      margin: 10px 0 0;
-      color: var(--purple);
-      font-size: clamp(1.8rem, 3vw, 4rem);
-      line-height: 1.12;
-      font-weight: 900;
-      text-transform: none;
-    }
-
-    .current-participants {
-      margin: 8px 0 0;
-      color: var(--black);
-      font-size: clamp(1rem, 1.6vw, 2rem);
-      font-weight: 700;
-    }
-
-    .schedule-wrap {
-      width: min(1100px, 100%);
-      margin-top: 18px;
-      border: 2px solid var(--purple);
-      border-radius: 8px 8px 0 0;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(74,20,140,0.08);
-      background: #fff;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
-    thead th {
-      background: var(--purple);
-      color: #fff;
-      text-align: left;
-      font-size: clamp(0.9rem, 1.3vw, 1.4rem);
-      font-weight: 900;
-      padding: 0.7rem 0.85rem;
-      letter-spacing: 0.04em;
-    }
-
-    tbody td {
-      padding: 0.4rem 0.85rem;
-      border-bottom: 1px solid #ddd1ea;
-      font-size: clamp(0.85rem, 1.1vw, 1.2rem);
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    tbody tr:nth-child(even) { background: #f9f4fd; }
-    tbody tr.active {
-      background: var(--purple);
-      color: #fff;
-    }
-
-    tbody tr.active td {
-      border-bottom-color: rgba(255,255,255,0.25);
-    }
-
-    .controls {
-      position: fixed;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 10px 12px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.08);
-      z-index: 20;
-    }
-
-    body.admin-hidden .controls {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(40px);
-    }
-
-    .controls button {
-      background: var(--purple);
-      color: #fff;
-      border: 0;
-      border-radius: 8px;
-      min-width: clamp(120px, 18vw, 240px);
-      min-height: 52px;
-      padding: 0.72rem 1rem;
-      font-weight: 900;
-      font-size: clamp(0.8rem, 1.2vw, 1.5rem);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #29094f;
-    }
-
-    .controls button:hover { background: #5d1ca4; }
-    .controls button:active { transform: translateY(2px); box-shadow: 0 2px 0 #29094f; }
-
-    @media (max-width: 900px) {
-      .header { gap: 12px; }
-      .title { white-space: normal; }
-      .schedule-wrap { margin-bottom: 110px; }
-      .controls { flex-wrap: wrap; }
-      .controls button { flex: 1 1 180px; }
-    }
-
-    @media (max-width: 640px) {
-      .page { padding-left: 10px; padding-right: 10px; }
-      .header { gap: 8px; }
-      .title { font-size: clamp(1.7rem, 9vw, 2.8rem); }
-      .date { letter-spacing: 0.06em; }
-      .rule { width: min(92%, 1100px); }
-      .timer-box { min-width: 0; width: 100%; }
-      .timer { font-size: clamp(4rem, 19vw, 7rem); }
-      .status { letter-spacing: 0.08em; }
-      .current-title { font-size: clamp(1.5rem, 7vw, 2.4rem); }
-      .schedule-wrap { margin-bottom: 110px; }
-      thead th, tbody td { padding-left: 0.4rem; padding-right: 0.4rem; }
-    }
+    :root{--purple:#4A148C;--black:#0d0d12;--green:#1d7a3d;--white:#fff}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;}body{min-height:100vh;background:#f7f7f7;color:var(--black);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+    .page{width:100%;min-height:100vh;background:#f7f7f7;padding:14px 22px 22px;display:flex;flex-direction:column;align-items:center}
+    .header{width:min(1400px,100%);display:flex;align-items:center;justify-content:center;gap:18px;margin-top:4px}
+    .logo-wrap{flex:0 0 auto;width:clamp(54px,5vw,86px);height:clamp(54px,5vw,86px);border-radius:50%;background:linear-gradient(135deg,#54a9df,#78459c 52%,#ed267d);display:grid;place-items:center;box-shadow:0 6px 16px #4A148C30;position:relative;overflow:hidden}
+    .logo-wrap:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,#ffffff38,transparent 28%)}
+    .pcm{position:relative;z-index:1;color:#fff;font-size:clamp(.95rem,1.4vw,2.1rem);font-weight:700;letter-spacing:-4px;font-family:Arial,sans-serif;transform:translateY(-2px)}
+    .title{color:var(--purple);font-size:clamp(2.2rem,4vw,6rem);line-height:1.05;letter-spacing:.03em;text-transform:uppercase;font-weight:900;text-align:center;margin:0;white-space:nowrap}
+    .date{margin:10px 0 0;color:var(--purple);text-align:center;font-size:clamp(1.2rem,2vw,2.6rem);font-weight:900;letter-spacing:.08em}
+    .rule{width:min(78%,1200px);display:grid;gap:6px;margin:12px auto 0}.rule span{height:4px;border-radius:2px;background:var(--purple)}
+    .hero{width:min(1200px,100%);text-align:center;margin-top:6px}.timer-box{display:inline-block;background:#000;border-radius:12px;padding:14px 26px 10px;min-width:min(78vw,760px);box-shadow:0 8px 18px #0000001f}.timer{color:#fff;background:#000;font-size:clamp(5rem,12vw,13rem);line-height:.9;letter-spacing:.02em;font-weight:900;font-variant-numeric:tabular-nums;margin:0}
+    .status{margin:18px 0 0;color:var(--purple);font-size:clamp(1rem,1.9vw,2.5rem);font-weight:900;letter-spacing:.12em;text-transform:uppercase;min-height:1.3em}.current-title{margin:10px 0 0;color:var(--purple);font-size:clamp(1.8rem,3vw,4rem);line-height:1.12;font-weight:900}.current-participants{margin:8px 0 0;color:var(--black);font-size:clamp(1.25rem,2.2vw,2.6rem);font-weight:900}
+    .schedule-wrap{width:min(1100px,100%);margin-top:18px;border:2px solid var(--purple);border-radius:8px 8px 0 0;overflow:auto;box-shadow:0 6px 16px #4A148C14;background:#fff}
+    table{width:100%;border-collapse:collapse;table-layout:fixed}thead th{background:var(--purple);color:#fff;text-align:left;font-size:clamp(1rem,1.5vw,1.7rem);font-weight:900;padding:.7rem .85rem;letter-spacing:.04em}
+    tbody td{padding:.48rem .85rem;border-bottom:1px solid #ddd1ea;font-size:clamp(.95rem,1.3vw,1.45rem);font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    /* Larger participant names help the audience identify choirs and speakers from a distance. */
+    tbody td:last-child{font-size:clamp(1.05rem,1.75vw,1.9rem);font-weight:900;letter-spacing:.01em}
+    tbody tr:nth-child(even){background:#f9f4fd}tbody tr.active{background:var(--purple);color:#fff}tbody tr.active td{border-bottom-color:#ffffff40}
+    .controls{position:fixed;left:14px;right:14px;bottom:14px;display:flex;justify-content:center;gap:12px;padding:10px 12px;background:#ffffffe6;border-radius:10px;box-shadow:0 -4px 18px #00000014;z-index:20;transition:opacity .2s,transform .2s}
+    body.admin-hidden .controls{opacity:0;pointer-events:none;transform:translateY(40px)}.controls button{background:var(--purple);color:#fff;border:0;border-radius:8px;min-width:clamp(120px,18vw,240px);min-height:52px;padding:.72rem 1rem;font-weight:900;font-size:clamp(.8rem,1.2vw,1.5rem);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 0 #29094f}.controls button:hover{background:#5d1ca4}.controls button:active{transform:translateY(2px);box-shadow:0 2px 0 #29094f}
+    @media(max-width:900px){.header{gap:12px}.title{white-space:normal}.schedule-wrap{margin-bottom:110px}.controls{flex-wrap:wrap}.controls button{flex:1 1 180px}}
+    @media(max-width:640px){.page{padding-left:10px;padding-right:10px}.header{gap:8px}.title{font-size:clamp(1.7rem,9vw,2.8rem)}.date{letter-spacing:.06em}.rule{width:min(92%,1100px)}.timer-box{min-width:0;width:100%}.timer{font-size:clamp(4rem,19vw,7rem)}.status{letter-spacing:.08em}.current-title{font-size:clamp(1.5rem,7vw,2.4rem)}.current-participants{font-size:clamp(1.2rem,5vw,1.8rem)}.schedule-wrap{margin-bottom:110px}thead th,tbody td{padding-left:.4rem;padding-right:.4rem}tbody td:last-child{font-size:clamp(1rem,4.2vw,1.35rem)}}
   </style>
 </head>
 <body class="admin-hidden">
   <main class="page">
-    <header class="header">
-      <div class="logo-wrap" aria-label="PCM logo">
-        <div class="pcm">PCM</div>
-      </div>
-
-      <h1 class="title">Ratiba ya Ibada ya Leo</h1>
-    </header>
-
+    <header class="header"><div class="logo-wrap" aria-label="PCM logo"><div class="pcm">PCM</div></div><h1 class="title">Ratiba ya Ibada ya Leo</h1></header>
     <div class="date">TR. 06/11/2026</div>
-
-    <div class="rule" aria-hidden="true">
-      <span></span>
-      <span></span>
-    </div>
-
+    <div class="rule" aria-hidden="true"><span></span><span></span></div>
     <section class="hero" aria-live="polite">
-      <div class="timer-box">
-        <div id="timer" class="timer" role="timer" aria-live="polite">10:00</div>
-      </div>
+      <div class="timer-box"><div id="timer" class="timer" role="timer" aria-live="off">10:00</div></div>
       <div id="status" class="status">TAYARI KUANZA</div>
       <h2 id="current-title" class="current-title">Uimbaji wa nyimbo za kristo</h2>
       <div id="current-participants" class="current-participants">Washiriki: Wote</div>
     </section>
-
     <section class="schedule-wrap" aria-label="Ratiba ya ibada">
-      <table>
-        <colgroup>
-          <col style="width: 18%;" />
-          <col style="width: 52%;" />
-          <col style="width: 30%;" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th scope="col">Muda</th>
-            <th scope="col">Tukio</th>
-            <th scope="col">Washiriki</th>
-          </tr>
-        </thead>
+      <table><colgroup><col style="width:18%"/><col style="width:44%"/><col style="width:38%"/></colgroup>
+        <thead><tr><th scope="col">Muda</th><th scope="col">Tukio</th><th scope="col">Washiriki</th></tr></thead>
         <tbody id="schedule"></tbody>
       </table>
     </section>
-
-    <nav class="controls" aria-label="Udhibiti wa mratibu">
-      <button id="start-btn" type="button">ANZA</button>
-      <button id="next-btn" type="button">RUKA / NEXT</button>
-      <button id="add-btn" type="button">ONGEZA MUDA +5</button>
-    </nav>
+    <nav class="controls" aria-label="Udhibiti wa mratibu"><button id="start-btn" type="button">ANZA</button><button id="next-btn" type="button">RUKA / NEXT</button><button id="add-btn" type="button">ONGEZA MUDA +5</button></nav>
   </main>
-
   <script>
-    const events = [
-      { time: '18:30 - 19:00', name: 'Ufunguzi wa Sabato', people: 'Wote', minutes: 30 },
-      { time: '19:00 - 19:10', name: 'Uimbaji wa nyimbo za kristo', people: 'Wote', minutes: 10 },
-      { time: '19:10 - 19:25', name: 'Mind Challenge', people: 'Wote', minutes: 15 },
-      { time: '19:25 - 19:28', name: 'Wimbo', people: 'THE GOLDEN CHORDS', minutes: 3 },
-      { time: '19:28 - 19:43', name: 'Mahusiano', people: 'Wote', minutes: 15 },
-      { time: '19:43 - 19:46', name: 'Wimbo', people: 'TUMH CHOIR', minutes: 3 },
-      { time: '19:46 - 19:56', name: 'Maswali na Majibu', people: 'Wote', minutes: 10 },
-      { time: '19:56 - 19:59', name: 'Wimbo', people: 'WANDIJO ACCAPELA', minutes: 3 },
-      { time: '19:59 - 20:02', name: 'Wimbo', people: 'THE GOLDEN CHORDS', minutes: 3 },
-      { time: '20:02 - 20:25', name: 'Mafundisho', people: 'Wote', minutes: 23 },
-      { time: '20:25 - 20:28', name: 'Wimbo', people: 'TUMH CHOIR', minutes: 3 },
-      { time: '20:30 - 20:45', name: 'Divine Service', people: 'Wote', minutes: 15 },
-      { time: '20:45 - 21:00', name: 'Matangazo', people: 'Wote', minutes: 15 },
-      { time: '21:00', name: 'Kutawanyika', people: 'Wote', minutes: 0 }
+    const events=[
+      {time:'18:30 - 19:00',name:'Ufunguzi wa Sabato',people:'Wote',minutes:30},
+      {time:'19:00 - 19:10',name:'Uimbaji wa nyimbo za kristo',people:'Wote',minutes:10},
+      {time:'19:10 - 19:25',name:'Mind Challenge',people:'Wote',minutes:15},
+      {time:'19:25 - 19:28',name:'Wimbo',people:'THE GOLDEN CHORDS',minutes:3},
+      {time:'19:28 - 19:43',name:'Mahusiano',people:'Wote',minutes:15},
+      {time:'19:43 - 19:46',name:'Wimbo',people:'TUMH CHOIR',minutes:3},
+      {time:'19:46 - 19:56',name:'Maswali na Majibu',people:'Wote',minutes:10},
+      {time:'19:56 - 19:59',name:'Wimbo',people:'WANDIJO ACCAPELA',minutes:3},
+      {time:'19:59 - 20:02',name:'Wimbo',people:'THE GOLDEN CHORDS',minutes:3},
+      {time:'20:02 - 20:25',name:'Mafundisho',people:'Wote',minutes:23},
+      {time:'20:25 - 20:28',name:'Wimbo',people:'TUMH CHOIR',minutes:3},
+      {time:'20:30 - 20:45',name:'Divine Service',people:'Wote',minutes:15},
+      {time:'20:45 - 21:00',name:'Matangazo',people:'Wote',minutes:15},
+      {time:'21:00',name:'Kutawanyika',people:'Wote',minutes:0}
     ];
-
-    const timerEl = document.getElementById('timer');
-    const statusEl = document.getElementById('status');
-    const titleEl = document.getElementById('current-title');
-    const participantsEl = document.getElementById('current-participants');
-    const scheduleEl = document.getElementById('schedule');
-
-    let currentIndex = 1; // starts at 10:00 event
-    let remaining = 10 * 60;
-    let running = false;
-    let deadline = 0;
-    let intervalId = null;
-    let audioContext = null;
-
-    function renderSchedule() {
-      scheduleEl.innerHTML = events.map((event, index) => {
-        const isActive = index === currentIndex;
-        const isDone = index < currentIndex;
-        return `<tr class="${isActive ? 'active' : ''} ${isDone && !isActive ? 'completed' : ''}">
-          <td>${event.time}</td>
-          <td>${event.name}</td>
-          <td>${event.people}</td>
-        </tr>`;
-      }).join('');
-
-      const activeRow = scheduleEl.querySelector('tr.active');
-      if (activeRow) activeRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
-
-    function formatTime(totalSeconds) {
-      const safe = Math.max(0, totalSeconds);
-      const minutes = String(Math.floor(safe / 60)).padStart(2, '0');
-      const seconds = String(safe % 60).padStart(2, '0');
-      return `${minutes}:${seconds}`;
-    }
-
-    function renderCurrent() {
-      const event = events[currentIndex];
-      titleEl.textContent = event ? event.name : 'Ratiba imekamilika';
-      participantsEl.textContent = event ? `Washiriki: ${event.people}` : 'Asanteni kwa kushiriki';
-      timerEl.textContent = formatTime(remaining);
-      renderSchedule();
-    }
-
-    function beep() {
-      try {
-        audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
-        if (audioContext.state === 'suspended') audioContext.resume();
-
-        [0, 0.22, 0.44].forEach((delay) => {
-          const oscillator = audioContext.createOscillator();
-          const gain = audioContext.createGain();
-          oscillator.type = 'sine';
-          oscillator.frequency.value = 880;
-          gain.gain.setValueAtTime(0.0001, audioContext.currentTime + delay);
-          gain.gain.exponentialRampToValueAtTime(0.35, audioContext.currentTime + delay + 0.015);
-          gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + delay + 0.18);
-          oscillator.connect(gain);
-          gain.connect(audioContext.destination);
-          oscillator.start(audioContext.currentTime + delay);
-          oscillator.stop(audioContext.currentTime + delay + 0.19);
-        });
-      } catch (error) {
-        console.warn('Audio beep unavailable:', error);
-      }
-    }
-
-    function stopClock() {
-      running = false;
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    function tick() {
-      remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-      timerEl.textContent = formatTime(remaining);
-
-      if (remaining <= 0) {
-        stopClock();
-        beep();
-        statusEl.textContent = 'MUDA UMEISHA — TUKIO LINALOFUATA';
-        setTimeout(() => advanceEvent(true), 650);
-      }
-    }
-
-    function startTimer() {
-      if (currentIndex >= events.length || running) return;
-      const event = events[currentIndex];
-      if (!event || event.minutes === 0) {
-        statusEl.textContent = 'RATIBA IMEKAMILIKA';
-        return;
-      }
-
-      if (remaining <= 0) remaining = event.minutes * 60;
-      running = true;
-      deadline = Date.now() + remaining * 1000;
-      statusEl.textContent = 'TAYARI KUANZA';
-      clearInterval(intervalId);
-      intervalId = setInterval(tick, 200);
-    }
-
-    function advanceEvent(fromAlarm = false) {
-      stopClock();
-      if (!fromAlarm && currentIndex < events.length - 1) beep();
-
-      if (currentIndex < events.length - 1) {
-        currentIndex += 1;
-        remaining = events[currentIndex].minutes * 60;
-        statusEl.textContent = 'TAYARI KUANZA';
-      } else {
-        currentIndex = events.length - 1;
-        remaining = 0;
-        statusEl.textContent = 'RATIBA IMEKAMILIKA';
-      }
-
-      renderCurrent();
-    }
-
-    function addFiveMinutes() {
-      if (currentIndex >= events.length || events[currentIndex].minutes === 0) return;
-      remaining += 5 * 60;
-      if (running) deadline += 5 * 60 * 1000;
-      timerEl.textContent = formatTime(remaining);
-      statusEl.textContent = running ? 'MUDA UMEONGEZWA +5' : 'MUDA UMEONGEZWA +5';
-    }
-
-    document.getElementById('start-btn').addEventListener('click', startTimer);
-    document.getElementById('next-btn').addEventListener('click', () => advanceEvent(false));
-    document.getElementById('add-btn').addEventListener('click', addFiveMinutes);
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        document.body.classList.add('admin-hidden');
-      }
-
-      if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'k') {
-        event.preventDefault();
-        document.body.classList.toggle('admin-hidden');
-      }
-    });
-
+    const timerEl=document.getElementById('timer'),statusEl=document.getElementById('status'),titleEl=document.getElementById('current-title'),participantsEl=document.getElementById('current-participants'),scheduleEl=document.getElementById('schedule');
+    let currentIndex=1,remaining=10*60,running=false,deadline=0,intervalId=null,audioContext=null,advanceTimeout=null;
+    function renderSchedule(){scheduleEl.innerHTML=events.map((event,index)=>`<tr class="${index===currentIndex?'active':''} ${index<currentIndex?'completed':''}"><td>${event.time}</td><td>${event.name}</td><td>${event.people}</td></tr>`).join('');const active=scheduleEl.querySelector('tr.active');if(active)active.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    function formatTime(s){s=Math.max(0,s);return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
+    function renderCurrent(){const event=events[currentIndex];titleEl.textContent=event?event.name:'Ratiba imekamilika';participantsEl.textContent=event?`Washiriki: ${event.people}`:'Asanteni kwa kushiriki';timerEl.textContent=formatTime(remaining);renderSchedule()}
+    function beep(){try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();[0,.22,.44].forEach(delay=>{const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();oscillator.type='sine';oscillator.frequency.value=880;gain.gain.setValueAtTime(.0001,audioContext.currentTime+delay);gain.gain.exponentialRampToValueAtTime(.35,audioContext.currentTime+delay+.015);gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+delay+.18);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start(audioContext.currentTime+delay);oscillator.stop(audioContext.currentTime+delay+.19)})}catch(error){console.warn('Audio beep unavailable:',error)}}
+    function stopClock(){running=false;clearInterval(intervalId);intervalId=null}
+    function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timerEl.textContent=formatTime(remaining);if(remaining<=0){stopClock();beep();statusEl.textContent='MUDA UMEISHA — TUKIO LINALOFUATA';advanceTimeout=setTimeout(()=>advanceEvent(true),650)}}
+    function startTimer(){if(currentIndex>=events.length||running)return;const event=events[currentIndex];if(!event||event.minutes===0){statusEl.textContent='RATIBA IMEKAMILIKA';return}if(remaining<=0)remaining=event.minutes*60;running=true;deadline=Date.now()+remaining*1000;statusEl.textContent='TUKIO LINAENDELEA';if(audioContext&&audioContext.state==='suspended')audioContext.resume();clearInterval(intervalId);intervalId=setInterval(tick,200)}
+    function advanceEvent(fromAlarm=false){if(advanceTimeout){clearTimeout(advanceTimeout);advanceTimeout=null}stopClock();if(!fromAlarm&&currentIndex<events.length-1)beep();if(currentIndex<events.length-1){currentIndex++;remaining=events[currentIndex].minutes*60;statusEl.textContent=events[currentIndex].minutes===0?'RATIBA IMEKAMILIKA':'TAYARI KUANZA'}else{currentIndex=events.length;remaining=0;statusEl.textContent='RATIBA IMEKAMILIKA'}renderCurrent()}
+    function addFiveMinutes(){if(currentIndex>=events.length||events[currentIndex].minutes===0)return;remaining+=300;if(running)deadline+=300000;timerEl.textContent=formatTime(remaining);statusEl.textContent=running?'MUDA UMEONGEZWA +5':'MUDA UMEONGEZWA +5 — BONYEZA ANZA'}
+    document.getElementById('start-btn').addEventListener('click',startTimer);document.getElementById('next-btn').addEventListener('click',()=>advanceEvent(false));document.getElementById('add-btn').addEventListener('click',addFiveMinutes);
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')document.body.classList.add('admin-hidden');if(event.ctrlKey&&event.shiftKey&&event.key.toLowerCase()==='k'){event.preventDefault();document.body.classList.toggle('admin-hidden')}});
     renderCurrent();
   </script>
 </body>

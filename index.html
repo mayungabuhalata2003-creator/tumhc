@@ -1,139 +1,37 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#4A148C">
-  <title>Ratiba ya Ibada ya Leo | TUMH</title>
-  <style>
-    :root { color-scheme: light; --purple:#4A148C; --light-purple:#E1BEE7; --black:#08060b; --green:#176b36; --white:#fff; }
-    * { box-sizing:border-box; }
-    html,body { margin:0; min-height:100%; }
-    body { min-height:100vh; background:var(--white); color:var(--black); font-family:Arial,Helvetica,sans-serif; display:flex; flex-direction:column; }
-    .page { width:min(100%,1920px); min-height:100vh; margin:auto; padding:1.1vh 2.4vw 0; display:flex; flex-direction:column; }
-    header { text-align:center; flex:0 0 auto; position:relative; }
-    .logo { display:block; width:clamp(58px,7vw,100px); height:auto; margin:0 auto .35rem; border-radius:12px; box-shadow:0 3px 12px #4A148c30; }
-    h1 { margin:0; color:var(--purple); font-size:clamp(2rem,4vw,4.5rem); line-height:1; letter-spacing:.035em; font-weight:900; }
-    .date { margin:.35rem 0 .45rem; color:var(--purple); font-size:clamp(1.1rem,1.8vw,1.8rem); font-weight:800; letter-spacing:.08em; }
-    .double-rule { display:grid; gap:5px; width:min(78%,1100px); margin:0 auto; }
-    .double-rule span { height:4px; background:var(--purple); border-radius:3px; }
-    .hero { text-align:center; padding:.5vh 0 .4vh; }
-    .timer { display:inline-block; color:var(--black); font-variant-numeric:tabular-nums; font-size:clamp(4.5rem,13vh,10.5rem); font-weight:900; line-height:.96; letter-spacing:.025em; }
-    .status { min-height:1.4em; margin:.15rem 0; color:var(--purple); font-weight:800; font-size:clamp(.9rem,1.5vw,1.4rem); letter-spacing:.08em; }
-    .current-title { margin:0; color:var(--purple); font-size:clamp(1.35rem,2.5vw,2.5rem); line-height:1.1; font-weight:900; }
-    .current-participants { margin:.12rem 0 .4rem; font-size:clamp(1rem,1.6vw,1.6rem); font-weight:700; }
-    .schedule-wrap { flex:1 1 auto; min-height:150px; overflow:auto; border:2px solid var(--purple); border-radius:7px; }
-    table { width:100%; border-collapse:collapse; table-layout:fixed; }
-    col.time { width:18%; } col.event { width:52%; } col.people { width:30%; }
-    th { position:sticky; top:0; z-index:1; background:var(--purple); color:var(--white); text-align:left; font-size:clamp(.9rem,1.45vw,1.45rem); padding:.42rem .8rem; letter-spacing:.04em; }
-    td { padding:.23rem .8rem; border-bottom:1px solid #d5c6dc; font-size:clamp(.82rem,1.3vw,1.27rem); line-height:1.12; font-weight:650; }
-    tbody tr:nth-child(even) { background:#f7f1f9; }
-    tbody tr.active { background:var(--purple); color:var(--white); }
-    tbody tr.completed:not(.active) td:first-child::after { content:' ✓'; font-weight:900; }
-    td:first-child { white-space:nowrap; font-variant-numeric:tabular-nums; }
-    .footer { flex:0 0 auto; text-align:center; padding:.32rem 0 .15rem; }
-    .sabbath { margin:0; color:var(--purple); font-size:clamp(1.4rem,2.5vw,2.5rem); line-height:1; font-weight:900; font-style:italic; letter-spacing:.05em; }
-    .motto { margin:.15rem 0 0; color:var(--green); font-size:clamp(.8rem,1.3vw,1.25rem); font-weight:900; letter-spacing:.13em; }
-    .controls { position:sticky; bottom:0; z-index:3; display:flex; justify-content:center; gap:clamp(.5rem,1.5vw,1.5rem); padding:.55rem 0 max(.55rem,env(safe-area-inset-bottom)); background:rgba(255,255,255,.97); }
-    button { min-height:48px; padding:.65rem clamp(1rem,2.5vw,2.6rem); border:0; border-radius:7px; background:var(--purple); color:var(--white); font:inherit; font-size:clamp(.95rem,1.55vw,1.5rem); font-weight:900; letter-spacing:.025em; cursor:pointer; box-shadow:0 3px 0 #29094f; }
-    button:hover { background:#6120a4; } button:active { transform:translateY(2px); box-shadow:0 1px 0 #29094f; }
-    button:focus-visible { outline:4px solid #f0ad00; outline-offset:3px; }
-    @media (min-width:1000px) and (min-height:700px) { .page { height:100vh; } .schedule-wrap { min-height:0; } th { padding-top:.32rem; padding-bottom:.32rem; } td { padding-top:.16rem; padding-bottom:.16rem; } }
-    @media (max-width:650px) {
-      .page { padding:12px 12px 0; min-height:100svh; }
-      h1 { line-height:1.08; }
-      .logo { width:70px; margin-bottom:.45rem; }
-      .timer { font-size:clamp(4.2rem,18vw,7rem); }
-      .schedule-wrap { max-height:43vh; }
-      col.time { width:24%; } col.event { width:44%; } col.people { width:32%; }
-      th,td { padding-left:.4rem; padding-right:.4rem; }
-      .controls { display:grid; grid-template-columns:1fr 1.25fr 1.35fr; gap:7px; }
-      button { min-height:52px; padding:.5rem .3rem; font-size:clamp(.72rem,3.2vw,1rem); }
-      .motto { letter-spacing:.06em; }
-    }
-    @media (prefers-reduced-motion:no-preference) { button { transition:background .15s,transform .08s; } }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#4A148C">
+<title>Ratiba ya Ibada ya Leo | TUMH</title>
+<style>
+:root{color-scheme:light;--purple:#4A148C;--light-purple:#E1BEE7;--black:#08060b;--green:#176b36;--white:#fff}*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{min-height:100vh;background:var(--white);color:var(--black);font-family:Arial,Helvetica,sans-serif;display:flex;flex-direction:column}.page{width:min(100%,1920px);min-height:100vh;margin:auto;padding:1.1vh 2.4vw 0;display:flex;flex-direction:column}header{text-align:center;flex:0 0 auto}.brand{display:flex;align-items:center;justify-content:center;gap:clamp(.65rem,2vw,1.8rem)}.logo{display:block;flex:0 0 auto;width:clamp(54px,7.3vw,100px);height:clamp(54px,7.3vw,100px);border-radius:50%;box-shadow:0 2px 8px #4A148C35}h1{margin:0;color:var(--purple);font-size:clamp(2rem,4vw,4.5rem);line-height:1;letter-spacing:.035em;font-weight:900}.date{margin:.35rem 0 .45rem;color:var(--purple);font-size:clamp(1.1rem,1.8vw,1.8rem);font-weight:800;letter-spacing:.08em}.double-rule{display:grid;gap:5px;width:min(78%,1100px);margin:0 auto}.double-rule span{height:4px;background:var(--purple);border-radius:3px}.hero{text-align:center;padding:.5vh 0 .4vh}.timer{display:inline-block;color:var(--black);font-variant-numeric:tabular-nums;font-size:clamp(4.5rem,13vh,10.5rem);font-weight:900;line-height:.96;letter-spacing:.025em}.status{min-height:1.4em;margin:.15rem 0;color:var(--purple);font-weight:800;font-size:clamp(.9rem,1.5vw,1.4rem);letter-spacing:.08em}.current-title{margin:0;color:var(--purple);font-size:clamp(1.35rem,2.5vw,2.5rem);line-height:1.1;font-weight:900}.current-participants{margin:.12rem 0 .4rem;font-size:clamp(1rem,1.6vw,1.6rem);font-weight:700}.schedule-wrap{flex:1 1 auto;min-height:150px;overflow:auto;border:2px solid var(--purple);border-radius:7px}table{width:100%;border-collapse:collapse;table-layout:fixed}col.time{width:18%}col.event{width:52%}col.people{width:30%}th{position:sticky;top:0;z-index:1;background:var(--purple);color:var(--white);text-align:left;font-size:clamp(.9rem,1.45vw,1.45rem);padding:.42rem .8rem;letter-spacing:.04em}td{padding:.23rem .8rem;border-bottom:1px solid #d5c6dc;font-size:clamp(.82rem,1.3vw,1.27rem);line-height:1.12;font-weight:650}tbody tr:nth-child(even){background:#f7f1f9}tbody tr.active{background:var(--purple);color:var(--white)}tbody tr.completed:not(.active) td:first-child::after{content:' ✓';font-weight:900}td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums}.footer{flex:0 0 auto;text-align:center;padding:.32rem 0 .15rem}.sabbath{margin:0;color:var(--purple);font-size:clamp(1.4rem,2.5vw,2.5rem);line-height:1;font-weight:900;font-style:italic;letter-spacing:.05em}.motto{margin:.15rem 0 0;color:var(--green);font-size:clamp(.8rem,1.3vw,1.25rem);font-weight:900;letter-spacing:.13em}.controls{display:none;position:sticky;bottom:0;z-index:3;justify-content:center;gap:clamp(.5rem,1.5vw,1.5rem);padding:.55rem 0 max(.55rem,env(safe-area-inset-bottom));background:rgba(255,255,255,.97)}.page.admin-mode .controls{display:flex}.admin-note{display:none;color:var(--purple);text-align:center;font-size:.8rem;font-weight:700;margin:0}.page.admin-mode .admin-note{display:block}button{min-height:48px;padding:.65rem clamp(1rem,2.5vw,2.6rem);border:0;border-radius:7px;background:var(--purple);color:var(--white);font:inherit;font-size:clamp(.95rem,1.55vw,1.5rem);font-weight:900;letter-spacing:.025em;cursor:pointer;box-shadow:0 3px 0 #29094f}button:hover{background:#6120a4}button:active{transform:translateY(2px);box-shadow:0 1px 0 #29094f}button:focus-visible{outline:4px solid #f0ad00;outline-offset:3px}@media(min-width:1000px) and (min-height:700px){.page{height:100vh}.schedule-wrap{min-height:0}th{padding-top:.32rem;padding-bottom:.32rem}td{padding-top:.16rem;padding-bottom:.16rem}}@media(max-width:650px){.page{padding:12px 12px 0;min-height:100svh}.brand{gap:8px}.logo{width:52px;height:52px}h1{font-size:clamp(1.45rem,7vw,2rem);line-height:1.08}.timer{font-size:clamp(4.2rem,18vw,7rem)}.schedule-wrap{max-height:43vh}col.time{width:24%}col.event{width:44%}col.people{width:32%}th,td{padding-left:.4rem;padding-right:.4rem}.page.admin-mode .controls{display:grid;grid-template-columns:1fr 1.25fr 1.35fr;gap:7px}button{min-height:52px;padding:.5rem .3rem;font-size:clamp(.72rem,3.2vw,1rem)}.motto{letter-spacing:.06em}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <header>
-      <svg class="logo" viewBox="0 0 448 448" role="img" aria-labelledby="logo-title logo-desc" xmlns="http://www.w3.org/2000/svg">
-        <title id="logo-title">PCM — Personal Ministries</title>
-        <desc id="logo-desc">Nembo yenye herufi PCM, kofia ya mahafali na kitabu wazi.</desc>
-        <defs>
-          <linearGradient id="logo-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#54a9df"/><stop offset=".48" stop-color="#78459c"/><stop offset="1" stop-color="#ed267d"/></linearGradient>
-          <linearGradient id="logo-swoosh" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dd2d91" stop-opacity=".05"/><stop offset="1" stop-color="#ee2478" stop-opacity=".85"/></linearGradient>
-        </defs>
-        <rect width="448" height="448" rx="8" fill="url(#logo-bg)"/>
-        <path d="M0 278C95 216 160 204 225 180c77-28 132-77 223-173v198c-92 32-155 73-223 119C139 378 78 407 0 448Z" fill="url(#logo-swoosh)" opacity=".8"/>
-        <path d="M377 0C314 80 275 125 218 168 144 223 73 253 0 309v-93C84 166 148 140 210 96 253 65 291 32 319 0Z" fill="#52b4e5" opacity=".42"/>
-        <text x="224" y="151" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="139" font-weight="300" letter-spacing="-8">PCM</text>
-        <g fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
-          <path d="M96 231 220 188l126 43-125 48z"/>
-          <path d="m155 251-12 30c-4 14-1 29 5 38 22-18 46-19 72-3 25-16 51-15 72 3 6-14 8-29 3-43l-9-24"/>
-          <path d="M344 233c7 25 12 49 12 75M352 239l9 71" stroke-width="5"/>
-          <path d="M27 263 8 432c51-35 111-53 155-43 26 6 46 20 61 39 15-19 35-33 61-39 44-10 104 8 155 43l-19-169"/>
-        </g>
-      </svg>
-      <h1>RATIBA YA IBADA YA LEO</h1>
-      <p class="date">TR. 06/11/2026</p>
-      <div class="double-rule" aria-hidden="true"><span></span><span></span></div>
-    </header>
-    <section class="hero" aria-live="polite" aria-label="Tukio linaloendelea">
-      <div id="timer" class="timer" role="timer" aria-label="Muda uliobaki">30:00</div>
-      <p id="status" class="status">TAYARI KUANZA</p>
-      <h2 id="current-title" class="current-title">Ufunguzi wa Sabato</h2>
-      <p id="current-participants" class="current-participants">Washiriki: Wote</p>
-    </section>
-    <section class="schedule-wrap" aria-label="Ratiba kamili ya ibada">
-      <table><colgroup><col class="time"><col class="event"><col class="people"></colgroup>
-        <thead><tr><th scope="col">Muda</th><th scope="col">Tukio</th><th scope="col">Washiriki</th></tr></thead>
-        <tbody id="schedule"></tbody>
-      </table>
-    </section>
-    <footer class="footer"><p class="sabbath">HAPPY SABBATH</p><p class="motto">DEEP IN THE WORD, STRONG FOR THE MISSION</p></footer>
-    <nav class="controls" aria-label="Udhibiti wa mratibu">
-      <button id="start-btn" type="button">ANZA</button>
-      <button id="next-btn" type="button">RUKA / NEXT</button>
-      <button id="add-btn" type="button">ONGEZA MUDA +5</button>
-    </nav>
-  </main>
-  <script>
-    const events = [
-      { time:'18:30 - 19:00', name:'Ufunguzi wa Sabato', people:'Wote', minutes:30 },
-      { time:'19:00 - 19:10', name:'Uimbaji wa nyimbo za kristo', people:'Wote', minutes:10 },
-      { time:'19:10 - 19:25', name:'Mind Challenge', people:'Wote', minutes:15 },
-      { time:'19:25 - 19:28', name:'Wimbo', people:'THE GOLDEN CHORDS', minutes:3 },
-      { time:'19:28 - 19:43', name:'Mahusiano', people:'Wote', minutes:15 },
-      { time:'19:43 - 19:46', name:'Wimbo', people:'TUMH CHOIR', minutes:3 },
-      { time:'19:46 - 19:56', name:'Maswali na Majibu', people:'Wote', minutes:10 },
-      { time:'19:56 - 19:59', name:'Wimbo', people:'WANDIJO ACCAPELA', minutes:3 },
-      { time:'19:59 - 20:02', name:'Wimbo', people:'THE GOLDEN CHORDS', minutes:3 },
-      { time:'20:02 - 20:25', name:'Mafundisho', people:'Wote', minutes:23 },
-      { time:'20:25 - 20:28', name:'Wimbo', people:'TUMH CHOIR', minutes:3 },
-      { time:'20:30 - 20:45', name:'Divine Service', people:'Wote', minutes:15 },
-      { time:'20:45 - 21:00', name:'Matangazo', people:'Wote', minutes:15 },
-      { time:'21:00', name:'Kutawanyika', people:'Wote', minutes:0 }
-    ];
-    const timerEl=document.getElementById('timer'), statusEl=document.getElementById('status');
-    const titleEl=document.getElementById('current-title'), participantsEl=document.getElementById('current-participants'), scheduleEl=document.getElementById('schedule');
-    let currentIndex=0, remaining=events[0].minutes*60, running=false, deadline=0, intervalId=null, audioContext=null;
-    function renderSchedule(){
-      scheduleEl.innerHTML=events.map((event,index)=>`<tr data-index="${index}" class="${index===currentIndex?'active':''} ${index<currentIndex?'completed':''}"><td>${event.time}</td><td>${event.name}</td><td>${event.people}</td></tr>`).join('');
-      const activeRow=scheduleEl.querySelector('tr.active'); if(activeRow) activeRow.scrollIntoView({block:'nearest',behavior:'smooth'});
-    }
-    function formatTime(seconds){const safe=Math.max(0,seconds);return `${String(Math.floor(safe/60)).padStart(2,'0')}:${String(safe%60).padStart(2,'0')}`;}
-    function renderCurrent(){const event=events[currentIndex];titleEl.textContent=event?event.name:'Ratiba imekamilika';participantsEl.textContent=event?`Washiriki: ${event.people}`:'Asanteni kwa kushiriki';timerEl.textContent=formatTime(remaining);renderSchedule();}
-    function beep(){try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();[0,.22,.44].forEach(delay=>{const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();oscillator.type='sine';oscillator.frequency.value=880;gain.gain.setValueAtTime(.0001,audioContext.currentTime+delay);gain.gain.exponentialRampToValueAtTime(.35,audioContext.currentTime+delay+.015);gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+delay+.18);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start(audioContext.currentTime+delay);oscillator.stop(audioContext.currentTime+delay+.19);});}catch(error){console.warn('Sauti ya kengele haipatikani.',error);}}
-    function stopClock(){running=false;clearInterval(intervalId);intervalId=null;}
-    function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timerEl.textContent=formatTime(remaining);if(remaining<=0){stopClock();beep();statusEl.textContent='MUDA UMEISHA — TUKIO LINALOFUATA';window.setTimeout(()=>advanceEvent(true),650);}}
-    function startTimer(){if(currentIndex>=events.length||running)return;if(events[currentIndex].minutes===0){statusEl.textContent='RATIBA IMEKAMILIKA';return;}if(remaining<=0)remaining=events[currentIndex].minutes*60;running=true;deadline=Date.now()+remaining*1000;statusEl.textContent='TUKIO LINAENDELEA';if(audioContext&&audioContext.state==='suspended')audioContext.resume();clearInterval(intervalId);intervalId=window.setInterval(tick,200);}
-    function advanceEvent(fromAlarm=false){stopClock();if(!fromAlarm&&currentIndex<events.length-1)beep();if(currentIndex<events.length-1){currentIndex++;remaining=events[currentIndex].minutes*60;statusEl.textContent=events[currentIndex].minutes===0?'RATIBA IMEKAMILIKA':'TAYARI KUANZA';}else{currentIndex=events.length;remaining=0;statusEl.textContent='RATIBA IMEKAMILIKA';}renderCurrent();}
-    function addFiveMinutes(){if(currentIndex>=events.length||events[currentIndex].minutes===0)return;remaining+=300;if(running)deadline+=300000;timerEl.textContent=formatTime(remaining);statusEl.textContent=running?'MUDA UMEONGEZWA +5':'MUDA UMEONGEZWA +5 — BONYEZA ANZA';}
-    document.getElementById('start-btn').addEventListener('click',startTimer);
-    document.getElementById('next-btn').addEventListener('click',()=>advanceEvent(false));
-    document.getElementById('add-btn').addEventListener('click',addFiveMinutes);
-    renderCurrent();
-  </script>
-</body>
-</html>
+<main class="page" id="app">
+<header><div class="brand">
+<svg class="logo" viewBox="0 0 448 448" role="img" aria-label="Nembo ya PCM yenye kofia ya mahafali na kitabu wazi" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#54a9df"/><stop offset=".48" stop-color="#78459c"/><stop offset="1" stop-color="#ed267d"/></linearGradient><linearGradient id="swoosh" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dd2d91" stop-opacity=".05"/><stop offset="1" stop-color="#ee2478" stop-opacity=".85"/></linearGradient></defs>
+<rect width="448" height="448" rx="8" fill="url(#bg)"/><path d="M0 278C95 216 160 204 225 180c77-28 132-77 223-173v198c-92 32-155 73-223 119C139 378 78 407 0 448Z" fill="url(#swoosh)"/><path d="M377 0C314 80 275 125 218 168 144 223 73 253 0 309v-93C84 166 148 140 210 96 253 65 291 32 319 0Z" fill="#52b4e5" opacity=".42"/>
+<text x="224" y="151" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="139" font-weight="300" letter-spacing="-8">PCM</text>
+<g fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><path d="M96 231 220 188l126 43-125 48z"/><path d="m155 251-12 30c-4 14-1 29 5 38 22-18 46-19 72-3 25-16 51-15 72 3 6-14 8-29 3-43l-9-24"/><path d="M344 233c7 25 12 49 12 75M352 239l9 71" stroke-width="5"/><path d="M27 263 8 432c51-35 111-53 155-43 26 6 46 20 61 39 15-19 35-33 61-39 44-10 104 8 155 43l-19-169"/></g></svg>
+<h1>RATIBA YA IBADA YA LEO</h1></div><p class="date">TR. 06/11/2026</p><div class="double-rule" aria-hidden="true"><span></span><span></span></div></header>
+<section class="hero" aria-live="polite" aria-label="Tukio linaloendelea"><div id="timer" class="timer" role="timer" aria-label="Muda uliobaki">30:00</div><p id="status" class="status">TAYARI KUANZA</p><h2 id="current-title" class="current-title">Ufunguzi wa Sabato</h2><p id="current-participants" class="current-participants">Washiriki: Wote</p></section>
+<section class="schedule-wrap" aria-label="Ratiba kamili ya ibada"><table><colgroup><col class="time"><col class="event"><col class="people"></colgroup><thead><tr><th scope="col">Muda</th><th scope="col">Tukio</th><th scope="col">Washiriki</th></tr></thead><tbody id="schedule"></tbody></table></section>
+<footer class="footer"><p class="sabbath">HAPPY SABBATH</p><p class="motto">DEEP IN THE WORD, STRONG FOR THE MISSION</p></footer><p class="admin-note">UDHIBITI WA MRATIBU — bonyeza Esc kuficha</p>
+<nav class="controls" aria-label="Udhibiti wa mratibu"><button id="start-btn" type="button">ANZA</button><button id="next-btn" type="button">RUKA / NEXT</button><button id="add-btn" type="button">ONGEZA MUDA +5</button></nav>
+</main>
+<script>
+const events=[{time:'18:30 - 19:00',name:'Ufunguzi wa Sabato',people:'Wote',minutes:30},{time:'19:00 - 19:10',name:'Uimbaji wa nyimbo za kristo',people:'Wote',minutes:10},{time:'19:10 - 19:25',name:'Mind Challenge',people:'Wote',minutes:15},{time:'19:25 - 19:28',name:'Wimbo',people:'THE GOLDEN CHORDS',minutes:3},{time:'19:28 - 19:43',name:'Mahusiano',people:'Wote',minutes:15},{time:'19:43 - 19:46',name:'Wimbo',people:'TUMH CHOIR',minutes:3},{time:'19:46 - 19:56',name:'Maswali na Majibu',people:'Wote',minutes:10},{time:'19:56 - 19:59',name:'Wimbo',people:'WANDIJO ACCAPELA',minutes:3},{time:'19:59 - 20:02',name:'Wimbo',people:'THE GOLDEN CHORDS',minutes:3},{time:'20:02 - 20:25',name:'Mafundisho',people:'Wote',minutes:23},{time:'20:25 - 20:28',name:'Wimbo',people:'TUMH CHOIR',minutes:3},{time:'20:30 - 20:45',name:'Divine Service',people:'Wote',minutes:15},{time:'20:45 - 21:00',name:'Matangazo',people:'Wote',minutes:15},{time:'21:00',name:'Kutawanyika',people:'Wote',minutes:0}];
+const app=document.getElementById('app'),timerEl=document.getElementById('timer'),statusEl=document.getElementById('status'),titleEl=document.getElementById('current-title'),participantsEl=document.getElementById('current-participants'),scheduleEl=document.getElementById('schedule');let currentIndex=0,remaining=events[0].minutes*60,running=false,deadline=0,intervalId=null,audioContext=null;
+function renderSchedule(){scheduleEl.innerHTML=events.map((e,i)=>`<tr class="${i===currentIndex?'active':''} ${i<currentIndex?'completed':''}"><td>${e.time}</td><td>${e.name}</td><td>${e.people}</td></tr>`).join('');const row=scheduleEl.querySelector('.active');if(row)row.scrollIntoView({block:'nearest',behavior:'smooth'})}
+function formatTime(s){s=Math.max(0,s);return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
+function renderCurrent(){const e=events[currentIndex];titleEl.textContent=e?e.name:'Ratiba imekamilika';participantsEl.textContent=e?`Washiriki: ${e.people}`:'Asanteni kwa kushiriki';timerEl.textContent=formatTime(remaining);renderSchedule()}
+function beep(){try{audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();[0,.22,.44].forEach(d=>{const o=audioContext.createOscillator(),g=audioContext.createGain();o.type='sine';o.frequency.value=880;g.gain.setValueAtTime(.0001,audioContext.currentTime+d);g.gain.exponentialRampToValueAtTime(.35,audioContext.currentTime+d+.015);g.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+d+.18);o.connect(g);g.connect(audioContext.destination);o.start(audioContext.currentTime+d);o.stop(audioContext.currentTime+d+.19)})}catch(e){console.warn('Sauti ya kengele haipatikani.',e)}}
+function stopClock(){running=false;clearInterval(intervalId);intervalId=null}
+function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timerEl.textContent=formatTime(remaining);if(remaining<=0){stopClock();beep();statusEl.textContent='MUDA UMEISHA — TUKIO LINALOFUATA';setTimeout(()=>advanceEvent(true),650)}}
+function startTimer(){if(currentIndex>=events.length||running)return;if(events[currentIndex].minutes===0){statusEl.textContent='RATIBA IMEKAMILIKA';return}if(remaining<=0)remaining=events[currentIndex].minutes*60;running=true;deadline=Date.now()+remaining*1000;statusEl.textContent='TUKIO LINAENDELEA';if(audioContext&&audioContext.state==='suspended')audioContext.resume();clearInterval(intervalId);intervalId=setInterval(tick,200)}
+function advanceEvent(fromAlarm=false){stopClock();if(!fromAlarm&&currentIndex<events.length-1)beep();if(currentIndex<events.length-1){currentIndex++;remaining=events[currentIndex].minutes*60;statusEl.textContent=events[currentIndex].minutes===0?'RATIBA IMEKAMILIKA':'TAYARI KUANZA'}else{currentIndex=events.length;remaining=0;statusEl.textContent='RATIBA IMEKAMILIKA'}renderCurrent()}
+function addFiveMinutes(){if(currentIndex>=events.length||events[currentIndex].minutes===0)return;remaining+=300;if(running)deadline+=300000;timerEl.textContent=formatTime(remaining);statusEl.textContent=running?'MUDA UMEONGEZWA +5':'MUDA UMEONGEZWA +5 — BONYEZA ANZA'}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='k'){e.preventDefault();app.classList.toggle('admin-mode')}else if(e.key==='Escape')app.classList.remove('admin-mode')});document.getElementById('start-btn').addEventListener('click',startTimer);document.getElementById('next-btn').addEventListener('click',()=>advanceEvent(false));document.getElementById('add-btn').addEventListener('click',addFiveMinutes);renderCurrent();
+</script></body></html>
